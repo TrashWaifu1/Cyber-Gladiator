@@ -21,11 +21,11 @@ public class EnemyController : MonoBehaviour
 
         if (target.transform.position.x < transform.position.x && isFolowing)
         {
-            velocity.x = -5f;
+            velocity.x = -2f;
         }
         else if (isFolowing)
         {
-            velocity.x = 5f;
+            velocity.x = 2f;
         }
 
         rb.velocity = velocity;
