@@ -123,30 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &31713784 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6725638237319354659, guid: 786feac0a4245154b8551edd15decd81, type: 3}
-  m_PrefabInstance: {fileID: 1786056272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &31713789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6725638237319354662, guid: 786feac0a4245154b8551edd15decd81, type: 3}
   m_PrefabInstance: {fileID: 1786056272}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &31713790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31713784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ef9c54a25dbf848aab84e671d7aee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 583252761}
-  cam: {fileID: 519420031}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +246,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &583252758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6458461386743804214, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+  m_PrefabInstance: {fileID: 1786056272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &583252761 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8411333830806578977, guid: 786feac0a4245154b8551edd15decd81, type: 3}
@@ -1162,6 +1148,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6725638237319354664, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: weaponJointRB
+      value: 
+      objectReference: {fileID: 583252761}
+    - target: {fileID: 6725638237319354664, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 6725638237319354664, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: weaponJoint
+      value: 
+      objectReference: {fileID: 583252758}
     - target: {fileID: 8411333830806578977, guid: 786feac0a4245154b8551edd15decd81, type: 3}
       propertyPath: m_BodyType
       value: 1
