@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    public Rigidbody2D weaponJointRB;
     public Camera cam;
 
     Vector2 mousePos;
@@ -19,8 +19,8 @@ public class Weapon : MonoBehaviour
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 lookDir = mousePos - rb.position;
+        Vector2 lookDir = mousePos - weaponJointRB.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        weaponJointRB.rotation = angle;
     }
 }
