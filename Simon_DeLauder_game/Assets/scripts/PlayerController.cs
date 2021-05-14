@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D weaponJointRB;
-    public GameObject weaponJoint;
+    public Transform weaponJoint;
     public Rigidbody2D rb;
     public float speed = 5;
     public float jumpHight = 5;
     public int Health = 3;
     public int maxHealth = 3;
     public Vector2 velocity;
-
-    Vector2 mousePos;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -30,14 +22,12 @@ public class PlayerController : MonoBehaviour
 
         Vector2 mouseDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         mouseDifference.Normalize();
-        weaponJoint.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
+        weaponJoint.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-
         velocity = rb.velocity;
         velocity.x = Input.GetAxisRaw("Horizontal") * speed;
 
