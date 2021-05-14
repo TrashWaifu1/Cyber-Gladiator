@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D weaponJointRB;
     public GameObject weaponJoint;
-    public Camera cam;
     public Rigidbody2D rb;
     public float speed = 5;
     public float jumpHight = 5;
@@ -21,15 +20,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (Health == 0)
+        {
+            transform.position = new Vector2(0, 0);
+            Health = maxHealth;
+        }
 
-        Vector2 lookDir = mousePos - weaponJointRB.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        weaponJointRB.rotation = angle;
-        //weaponJoint.transform.SetPositionAndRotation.
+        Vector2 mouseDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        mouseDifference.Normalize();
+        weaponJoint.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
 
         velocity = rb.velocity;
         velocity.x = Input.GetAxisRaw("Horizontal") * speed;
@@ -38,11 +45,5 @@ public class PlayerController : MonoBehaviour
             velocity.y = jumpHight;
 
         rb.velocity = velocity;
-
-        if (Health == 0)
-        {
-            transform.position = new Vector2(0, 0);
-            Health = maxHealth;
-        }
     }
 }
