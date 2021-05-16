@@ -4,19 +4,39 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public int roundNum;
+    public int roundNum = 1;
+    public int enemysOut;
     public GameObject[] enemys;
     public GameObject[] spawners;
+    public int roundStatis;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int randomSpawner;
+    int enemyType;
+    int maxEnemysOut = 30;
+    int enemysRoundCount = 1;
+    int enemysToBeDeploid;
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (roundStatis == 3)
+        {
+            roundNum++;
+            enemysRoundCount += 5;
+            enemysToBeDeploid = enemysRoundCount;
+            roundStatis = 2;
+        }
+
+        if (roundStatis == 2)
+        {
+            
+        }
+    }
+
+    void spawn()
+    {
+        randomSpawner = Random.Range(0, spawners.Length);
+        enemyType = Random.Range(0, enemys.Length);
+        Instantiate(enemys[enemyType], spawners[randomSpawner].transform);
     }
 }
