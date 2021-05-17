@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &445561004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445561005}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &445561005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445561004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4670076092653361543}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6458461386743804214
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +76,7 @@ GameObject:
   - component: {fileID: 6725638237319354663}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,14 +180,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d055000cc0d21694e943678d3a2fab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponJointRB: {fileID: 0}
-  weaponJoint: {fileID: 0}
+  weaponJoint: {fileID: 6924324823472719640}
   rb: {fileID: 6725638237319354660}
   speed: 5
   jumpHight: 5
   Health: 3
   maxHealth: 3
   velocity: {x: 0, y: 0}
+  firePoint: {fileID: 445561005}
+  playerHealth: 0
+  bullet: {fileID: 751089268042008760, guid: 6fae176355e9be04b9c372cd8bde9cdf, type: 3}
 --- !u!61 &6725638237319354663
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,7 +243,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.2429088, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 445561005}
   m_Father: {fileID: 6924324823472719640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

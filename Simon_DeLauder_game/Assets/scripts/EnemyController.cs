@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public int health = 100;
     public GameObject target;
     bool isFolowing;
     Rigidbody2D rb;
@@ -41,5 +42,20 @@ public class EnemyController : MonoBehaviour
         {
             isFolowing = false;
         }
+    }
+
+    public void TakeDamage (int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        //Death fx go here --->
+        FindObjectOfType<SpawnManager>().enemysOut--;
+        Destroy(gameObject);
     }
 }

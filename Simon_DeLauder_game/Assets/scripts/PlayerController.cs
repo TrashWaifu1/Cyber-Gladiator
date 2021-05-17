@@ -11,9 +11,15 @@ public class PlayerController : MonoBehaviour
     public int Health = 3;
     public int maxHealth = 3;
     public Vector2 velocity;
+    public Transform firePoint;
+    public int playerHealth;
+    public GameObject bullet;
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            shoot();
+
         if (Health == 0)
         {
             transform.position = new Vector2(0, 0);
@@ -36,4 +42,11 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = velocity;
     }
+
+    void shoot()
+    {
+        Instantiate(bullet, firePoint.position, firePoint.rotation);
+    }
+
+
 }

@@ -182,7 +182,7 @@ MonoBehaviour:
   - {fileID: 911517400}
   - {fileID: 2058404474}
   - {fileID: 1438601212}
-  roundStatis: 0
+  roundStatus: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -301,11 +301,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &583252759 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6924324823472719640, guid: 786feac0a4245154b8551edd15decd81, type: 3}
-  m_PrefabInstance: {fileID: 1786056272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &865879633
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911517400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.01, y: 2.12, z: 0}
+  m_LocalPosition: {x: -16.64, y: -1.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 956252576}
@@ -1738,6 +1733,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4670076092653361543, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.352
+      objectReference: {fileID: 0}
     - target: {fileID: 6725638237319354659, guid: 786feac0a4245154b8551edd15decd81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1787,17 +1786,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6725638237319354664, guid: 786feac0a4245154b8551edd15decd81, type: 3}
-      propertyPath: weaponJointRB
+      propertyPath: bullet
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6725638237319354664, guid: 786feac0a4245154b8551edd15decd81, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 6725638237319354664, guid: 786feac0a4245154b8551edd15decd81, type: 3}
-      propertyPath: weaponJoint
-      value: 
-      objectReference: {fileID: 583252759}
+      objectReference: {fileID: 8239202808330497330, guid: 30f60080dee35274081e288516dd0a00, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 786feac0a4245154b8551edd15decd81, type: 3}
 --- !u!1 &1790000997
@@ -1876,7 +1867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790000997}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.56, y: 6.88, z: 0}
+  m_LocalPosition: {x: -11.7, y: 4.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 956252576}
@@ -1958,7 +1949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806073492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39, y: 2.43, z: 0}
+  m_LocalPosition: {x: 11.24, y: -1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 956252576}
@@ -2003,7 +1994,7 @@ MonoBehaviour:
   m_Follow: {fileID: 31713789}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2150,7 +2141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058404474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 6.72, z: 0}
+  m_LocalPosition: {x: 6.42, y: 4.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 956252576}
