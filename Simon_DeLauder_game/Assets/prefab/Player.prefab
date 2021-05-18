@@ -410,17 +410,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d055000cc0d21694e943678d3a2fab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 500
   speed: 5
   jumpHight: 5
-  Health: 3
-  maxHealth: 3
+  health: 100
+  maxHealth: 100
   weaponJoint: {fileID: 6924324823472719640}
   rb: {fileID: 6725638237319354660}
   firePoint: {fileID: 445561005}
   bullet: {fileID: 8239202808330497330, guid: 30f60080dee35274081e288516dd0a00, type: 3}
   sword: {fileID: 686023626}
   trail: {fileID: 2005798785}
-  RotationAverage: 0
 --- !u!61 &6725638237319354663
 BoxCollider2D:
   m_ObjectHideFlags: 0

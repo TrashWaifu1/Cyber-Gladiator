@@ -25,6 +25,14 @@ public class EnemyController : MonoBehaviour
             rb.AddForce(new Vector2((target.transform.position.x < transform.position.x ? (rb.velocity.x > -maxSpeed ? -speed : 0) : (rb.velocity.x < maxSpeed ? speed : 0)) * Time.deltaTime, 0), ForceMode2D.Impulse);
     }
 
+    //Attack
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.name == "Player")
+            collision.collider.gameObject.GetComponent<PlayerController>().TakeDamage((int)Mathf.Abs(rb.velocity.x * 10));
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")

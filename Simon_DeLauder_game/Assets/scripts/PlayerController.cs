@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 500;
     public float speed = 5;
     public float jumpHight = 5;
-    public int health = 3;
-    public int maxHealth = 3;
+    public int health = 100;
+    public int maxHealth = 100;
     public Transform weaponJoint;
     public Rigidbody2D rb;
     public Transform firePoint;
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        UnityEngine.Debug.Log(health);
+
         switch (weaponSlot)
         {
             case (false):
@@ -56,15 +58,25 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) || Input.mouseScrollDelta != new Vector2(0, 0))
             weaponSlot = !weaponSlot;
 
-        if (health == 0)
-        {
-            transform.position = new Vector2(0, 0);
-            health = maxHealth;
-        }
+        
 
         Vector2 mouseDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         mouseDifference.Normalize();
         weaponJoint.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        transform.position = new Vector2(0, 0);
+        health = maxHealth;
     }
 
     // Update is called once per frame
