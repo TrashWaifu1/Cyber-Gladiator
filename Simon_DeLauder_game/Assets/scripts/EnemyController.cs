@@ -5,43 +5,36 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int health = 100;
-    public GameObject target;
-    bool isFolowing;
+    public float speed = 10;
+    public float maxSpeed = 5;
+
+    bool isFollowing;
     Rigidbody2D rb;
     Vector2 velocity;
-    // Start is called before the first frame update
+    GameObject target;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        velocity = rb.velocity;
-
-        if (target.transform.position.x < transform.position.x && isFolowing)
-        {
-            velocity.x = -2f;
-        }
-        else if (isFolowing)
-        {
-            velocity.x = 2f;
-        }
-
-        rb.velocity = velocity;
+        if (isFollowing)
+            rb.AddForce(new Vector2((target.transform.position.x < transform.position.x ? (rb.velocity.x > -maxSpeed ? -speed : 0) : (rb.velocity.x < maxSpeed ? speed : 0)) * Time.deltaTime, 0), ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
-        {
-            isFolowing = true;
-        }
-        else
-        {
-            isFolowing = false;
-        }
+            isFollowing = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name == "Player")
+            isFollowing = false;
     }
 
     public void TakeDamage (int damage)

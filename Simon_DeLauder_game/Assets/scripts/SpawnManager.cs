@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -22,7 +23,7 @@ public class SpawnManager : MonoBehaviour
         {
                 //Standby Phase
             case 2:
-                if (enemysOut == 0)
+                if (enemysOut <= 0)
                     roundStatus = 1;
                 break;
                 //Reset Phase

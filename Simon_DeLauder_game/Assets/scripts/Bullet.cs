@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float lifetime = 5000;
     public float speed;
     public int damage = 50;
     public Rigidbody2D rb;
+
+    Stopwatch lifetimeTimer = Stopwatch.StartNew();
     // Start is called before the first frame update
     void Start()
     {
         rb.velocity = transform.right * speed;
+    }
+
+    void Update()
+    {
+        if (lifetimeTimer.ElapsedMilliseconds > lifetime)
+            Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
