@@ -17,4 +17,24 @@ public class GameManager : MonoBehaviour
         healthText.SetText("Health: " + player.GetComponent<PlayerController>().health);
         roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
     }
+
+    public void start()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void guid()
+    {
+
+    }
+
+    public void settings()
+    {
+
+    }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
 }

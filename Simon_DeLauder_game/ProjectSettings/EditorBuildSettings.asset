@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 4ebcf72bca84a6242a86093d2620c41b
+  - enabled: 1
     path: Assets/Scenes/Simon work here.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Luke work here.unity
+    guid: 43856f53c54143c41876467e2c059611
+  - enabled: 1
+    path: Assets/Scenes/Zayne work here.unity
+    guid: 5842fe7ffd58eb84d99a443d93333501
+  - enabled: 1
+    path: Assets/Scenes/Forest Map.unity
+    guid: 1e2afcf64d42e554ea30d255612c58e4
   m_configObjects: {}
