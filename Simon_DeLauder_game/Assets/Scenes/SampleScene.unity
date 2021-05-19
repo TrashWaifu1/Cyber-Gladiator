@@ -335,7 +335,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 519420032}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 567
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 1
@@ -1812,6 +1812,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 686023626, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686023627, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6421
+      objectReference: {fileID: 0}
+    - target: {fileID: 686023627, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6301818
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005798785, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005798785, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005798785, guid: 786feac0a4245154b8551edd15decd81, type: 3}
+      propertyPath: m_MinVertexDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6725638237319354659, guid: 786feac0a4245154b8551edd15decd81, type: 3}
       propertyPath: m_Name
       value: Player

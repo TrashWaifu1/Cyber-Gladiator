@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public float fireRate = 500;
     public float speed = 5;
-    public float jumpHight = 5;
+    public float jumpHeight = 5;
     public int health = 100;
     public int maxHealth = 100;
     public Transform weaponJoint;
@@ -58,8 +58,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) || Input.mouseScrollDelta != new Vector2(0, 0))
             weaponSlot = !weaponSlot;
 
-        
-
         Vector2 mouseDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         mouseDifference.Normalize();
         weaponJoint.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
@@ -86,7 +84,7 @@ public class PlayerController : MonoBehaviour
         velocity.x = Input.GetAxisRaw("Horizontal") * speed;
 
         if (Input.GetKey(KeyCode.Space) && Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.52f), Vector2.down, 0.01f))
-            velocity.y = jumpHight;
+            velocity.y = jumpHeight;
 
         rb.velocity = velocity;
     }
@@ -100,5 +98,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && collision.otherCollider.gameObject.name == "Sword")
             collision.gameObject.GetComponent<EnemyController>().TakeDamage((int) (RotationAverage * 50));
+    }
+
+    public void heal(int amount)
+    {
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
     }
 }

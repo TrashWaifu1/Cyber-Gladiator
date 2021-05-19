@@ -164,3 +164,6 @@ MonoBehaviour:
   health: 100
   speed: 7
   maxSpeed: 10
+  bounceForce: 10
+  items:
+  - {fileID: 7229150229505383918, guid: b29f27fd856bc03449d167ac94134253, type: 3}
