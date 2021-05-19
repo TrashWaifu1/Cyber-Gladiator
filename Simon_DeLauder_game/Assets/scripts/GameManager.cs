@@ -43,5 +43,25 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void colosseum()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void street()
+    {
+        SceneManager.LoadScene(5);
+    }
+
+    public void forest()
+    {
+        SceneManager.LoadScene(6);
+    }
+
+    public void debug()
+    {
+        SceneManager.LoadScene(7);
+    }
     #endregion
 }
