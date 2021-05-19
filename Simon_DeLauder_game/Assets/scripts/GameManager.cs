@@ -18,23 +18,30 @@ public class GameManager : MonoBehaviour
         roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
     }
 
+    #region Buttons
     public void start()
     {
         SceneManager.LoadScene(1);
     }
 
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void guid()
     {
-
+        SceneManager.LoadScene(2);
     }
 
     public void settings()
     {
-
+        SceneManager.LoadScene(3);
     }
 
     public void quit()
     {
         Application.Quit();
     }
+    #endregion
 }
