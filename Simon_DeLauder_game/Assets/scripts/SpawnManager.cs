@@ -14,8 +14,8 @@ public class SpawnManager : MonoBehaviour
     int randomSpawner;
     int enemyType;
     int maxEnemysOut = 30;
-    int enemysRoundCount = 1;
-    int enemysToBeDeploid = 1;
+    int enemysRoundCount;
+    int enemysToBeDeploid;
 
     void Update()
     {
