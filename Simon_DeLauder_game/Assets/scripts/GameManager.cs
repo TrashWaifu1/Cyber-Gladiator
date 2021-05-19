@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject player;
+    public GameObject spawnManager;
 
-    // Update is called once per frame
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI roundText;
+
     void Update()
     {
-        
+        healthText.SetText("Health: " + player.GetComponent<PlayerController>().health);
+        roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
     }
 }
