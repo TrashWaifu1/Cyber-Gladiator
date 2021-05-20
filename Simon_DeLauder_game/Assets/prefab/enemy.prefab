@@ -162,8 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  speed: 7
+  acceleration: 10
   maxSpeed: 10
   bounceForce: 10
+  damageModifier: 5
   items:
   - {fileID: 7229150229505383918, guid: b29f27fd856bc03449d167ac94134253, type: 3}

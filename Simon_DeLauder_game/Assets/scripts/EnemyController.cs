@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int health = 100;
-    public float speed = 10;
+    public float acceleration = 10;
     public float maxSpeed = 5;
     public float bounceForce = 5;
+    public float damageModifier = 10;
     public GameObject[] items;
 
     bool isFollowing;
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         if (isFollowing)
-            rb.AddForce(new Vector2((target.transform.position.x < transform.position.x ? (rb.velocity.x > -maxSpeed ? -speed : 0) : (rb.velocity.x < maxSpeed ? speed : 0)) * Time.deltaTime, 0), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2((target.transform.position.x < transform.position.x ? (rb.velocity.x > -maxSpeed ? -acceleration : 0) : (rb.velocity.x < maxSpeed ? acceleration : 0)) * Time.deltaTime, 0), ForceMode2D.Impulse);
     }
 
     //Attack
@@ -32,7 +33,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.collider.gameObject.name == "Player")
         {
-            collision.collider.gameObject.GetComponent<PlayerController>().TakeDamage((int)Mathf.Abs(rb.velocity.x * 10));
+            collision.collider.gameObject.GetComponent<PlayerController>().TakeDamage((int)Mathf.Abs(rb.velocity.x * damageModifier));
             collision.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2((rb.velocity.x < 0 ? -bounceForce : bounceForce) * 2, 0), ForceMode2D.Impulse);
             rb.AddForce(new Vector2((rb.velocity.x > 0 ? -bounceForce : bounceForce), bounceForce * .6f), ForceMode2D.Impulse);
         }
