@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public int roundNum = 1;
-    public int enemysOut = 0;
+    public int enemysOut;
     public GameObject[] enemys;
     public GameObject[] spawners;
     public int roundStatus = 0;
