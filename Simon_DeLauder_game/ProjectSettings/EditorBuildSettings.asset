@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Settings.unity
     guid: ce9cb2e5226bfd04197668a0e66190ca
   - enabled: 1
-    path: Assets/Scenes/Luke work here.unity
+    path: Assets/Scenes/The Colosseum.unity
     guid: 43856f53c54143c41876467e2c059611
   - enabled: 1
     path: Assets/Scenes/Zayne work here.unity
