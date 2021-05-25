@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject sword;
     public TrailRenderer trail;
     public readonly List<float> rotationSamples = new List<float>();
+    public GameManager gm;
 
     Stopwatch fireTimer = Stopwatch.StartNew();
     float RotationAverage = 0;
@@ -28,39 +29,40 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        UnityEngine.Debug.Log(health);
-
-        switch (weaponSlot)
+        if (!gm.pause)
         {
-            case (false):
-                if (Input.GetMouseButton(0) && fireTimer.ElapsedMilliseconds > fireRate)
-                {
-                    shoot();
-                    fireTimer.Restart();
-                }
-                sword.SetActive(false);
-                break;
-            case (true):
-                sword.SetActive(true);
+            switch (weaponSlot)
+            {
+                case (false):
+                    if (Input.GetMouseButton(0) && fireTimer.ElapsedMilliseconds > fireRate)
+                    {
+                        shoot();
+                        fireTimer.Restart();
+                    }
+                    sword.SetActive(false);
+                    break;
+                case (true):
+                    sword.SetActive(true);
 
-                      rotationSamples.Add((weaponJoint.transform.rotation * Quaternion.Inverse(LastRotation)).eulerAngles.z * Time.deltaTime);
-                LastRotation = weaponJoint.transform.rotation;
+                    rotationSamples.Add((weaponJoint.transform.rotation * Quaternion.Inverse(LastRotation)).eulerAngles.z * Time.deltaTime);
+                    LastRotation = weaponJoint.transform.rotation;
 
-                if (rotationSamples.Count > 100)
-                    rotationSamples.RemoveAt(0);
+                    if (rotationSamples.Count > 100)
+                        rotationSamples.RemoveAt(0);
 
-                RotationAverage = Mathf.Abs(rotationSamples.Sum() / rotationSamples.Count);
+                    RotationAverage = Mathf.Abs(rotationSamples.Sum() / rotationSamples.Count);
 
-                trail.startColor = new Color(0, .8f, 1, Mathf.Clamp(RotationAverage / 1.5f, 0, 1));
-                break;
+                    trail.startColor = new Color(0, .8f, 1, Mathf.Clamp(RotationAverage / 1.5f, 0, 1));
+                    break;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q) || Input.mouseScrollDelta != new Vector2(0, 0))
+                weaponSlot = !weaponSlot;
+
+            Vector2 mouseDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            mouseDifference.Normalize();
+            weaponJoint.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
         }
-
-        if (Input.GetKeyDown(KeyCode.Q) || Input.mouseScrollDelta != new Vector2(0, 0))
-            weaponSlot = !weaponSlot;
-
-        Vector2 mouseDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        mouseDifference.Normalize();
-        weaponJoint.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseDifference.y, mouseDifference.x) * Mathf.Rad2Deg);
     }
 
     public void TakeDamage(int damage)

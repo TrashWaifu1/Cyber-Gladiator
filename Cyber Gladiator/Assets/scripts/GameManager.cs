@@ -12,10 +12,26 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI roundText;
 
+    public bool pause;
+
     void Update()
     {
         healthText.SetText("Health: " + player.GetComponent<PlayerController>().health);
         roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause = !pause;
+            PauseCheck();
+        }     
+    }
+
+    void PauseCheck()
+    {
+        if (pause)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
 
     #region Buttons
