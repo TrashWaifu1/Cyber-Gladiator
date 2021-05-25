@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.824495, y: 2.0859485, z: -10}
+  m_LocalPosition: {x: -5.8244905, y: 2.0855534, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 294989966}
@@ -4360,6 +4360,10 @@ PrefabInstance:
       propertyPath: roundText
       value: 
       objectReference: {fileID: 2136434336}
+    - target: {fileID: 7028348069958060569, guid: 82b135ab9d7694941b23a070170c4580, type: 3}
+      propertyPath: pauesScreen
+      value: 
+      objectReference: {fileID: 2136434338}
     - target: {fileID: 7028348069958060574, guid: 82b135ab9d7694941b23a070170c4580, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4890,6 +4894,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
+    - target: {fileID: 217859848, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1042787840}
+    - target: {fileID: 217859848, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: mainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 6964557560263031732, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -5038,3 +5050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2136434338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1238198418, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
+  m_PrefabInstance: {fileID: 2136434335}
+  m_PrefabAsset: {fileID: 0}

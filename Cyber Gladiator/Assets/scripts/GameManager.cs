@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject spawnManager;
+    public GameObject pauesScreen;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI roundText;
@@ -20,18 +21,23 @@ public class GameManager : MonoBehaviour
         roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
 
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pause = !pause;
-            PauseCheck();
-        }     
+            PauseCheck();    
     }
 
     void PauseCheck()
     {
+        pause = !pause;
         if (pause)
+        {
             Time.timeScale = 0;
+            pauesScreen.SetActive(true);
+        }
         else
+        {
             Time.timeScale = 1;
+            pauesScreen.SetActive(false);
+        }
+
     }
 
     #region Buttons
@@ -42,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void mainMenu()
     {
+        PauseCheck();
         SceneManager.LoadScene(0);
     }
 
