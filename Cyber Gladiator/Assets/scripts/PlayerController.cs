@@ -70,13 +70,7 @@ public class PlayerController : MonoBehaviour
         health -= damage;
 
         if (health <= 0)
-            Die();
-    }
-
-    void Die()
-    {
-        transform.position = new Vector2(0, 0);
-        health = maxHealth;
+            gm.Dead();
     }
 
     // Update is called once per frame

@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject spawnManager;
     public GameObject pauesScreen;
+    public GameObject levelOverScreen;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI roundText;
+    public TextMeshProUGUI roundTextEndGame;
 
     public bool pause;
 
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         healthText.SetText("Health: " + player.GetComponent<PlayerController>().health);
         roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
+        roundTextEndGame.SetText("Round " + spawnManager.GetComponent<SpawnManager>().roundNum);
 
         if (Input.GetKeyDown(KeyCode.Escape))
             PauseCheck();    
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 0;
+            if (!levelOverScreen.activeInHierarchy)
             pauesScreen.SetActive(true);
         }
         else
@@ -40,7 +44,21 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Dead()
+    {
+        levelOverScreen.SetActive(true);
+        PauseCheck();
+
+        PlayerPrefs.SetInt("PlayerRoundCount", spawnManager.GetComponent<SpawnManager>().roundNum);
+    }
+
     #region Buttons
+    public void gotoMainMenuInGame()
+    {
+        SceneManager.LoadScene(0);
+        PauseCheck();
+    }
+
     public void start()
     {
         SceneManager.LoadScene(1);
@@ -48,7 +66,6 @@ public class GameManager : MonoBehaviour
 
     public void mainMenu()
     {
-        PauseCheck();
         SceneManager.LoadScene(0);
     }
 
