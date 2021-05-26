@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             pauesScreen.SetActive(false);
         }
-
     }
 
     public void Dead()
