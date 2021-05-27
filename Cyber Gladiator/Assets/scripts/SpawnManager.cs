@@ -11,11 +11,17 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] spawners;
     public int roundStatus = 0;
 
+    Stopwatch spawnRate = Stopwatch.StartNew();
     int randomSpawner;
     int enemyType;
     int maxEnemysOut = 30;
     int enemysRoundCount;
     int enemysToBeDeploid;
+
+    private void Start()
+    {
+        //spawnRate.Start();
+    }
 
     void Update()
     {
@@ -34,7 +40,9 @@ public class SpawnManager : MonoBehaviour
             default:
                 if (enemysOut < maxEnemysOut)
                 {
+                    if (spawnRate.ElapsedMilliseconds >= 300)
                     spawn();
+
                     if (enemysToBeDeploid == 0)
                         roundStatus = 2;
                 }
@@ -52,6 +60,7 @@ public class SpawnManager : MonoBehaviour
 
     void spawn()
     {
+        spawnRate.Restart();
         enemysOut++;
         enemysToBeDeploid--;
         randomSpawner = Random.Range(0, spawners.Length);

@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
     public TrailRenderer trail;
     public readonly List<float> rotationSamples = new List<float>();
     public GameManager gm;
+    public float RotationAverage = 0;
 
     Stopwatch fireTimer = Stopwatch.StartNew();
-    float RotationAverage = 0;
     Quaternion LastRotation = new Quaternion();
     Vector2 velocity;
     bool weaponSlot;
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
             switch (weaponSlot)
             {
                 case (false):
+                    RotationAverage = 0;
                     if (Input.GetMouseButton(0) && fireTimer.ElapsedMilliseconds > fireRate)
                     {
                         shoot();
@@ -44,13 +45,13 @@ public class PlayerController : MonoBehaviour
                 case (true):
                     sword.SetActive(true);
 
-                    rotationSamples.Add((weaponJoint.transform.rotation * Quaternion.Inverse(LastRotation)).eulerAngles.z * Time.deltaTime);
+                    rotationSamples.Add(Mathf.Abs((weaponJoint.transform.rotation.eulerAngles.z - LastRotation.eulerAngles.z) * Time.deltaTime));
                     LastRotation = weaponJoint.transform.rotation;
 
                     if (rotationSamples.Count > 100)
                         rotationSamples.RemoveAt(0);
 
-                    RotationAverage = Mathf.Abs(rotationSamples.Sum() / rotationSamples.Count);
+                    RotationAverage = rotationSamples.Sum() / rotationSamples.Count * 40;
 
                     trail.startColor = new Color(0, .8f, 1, Mathf.Clamp(RotationAverage / 1.5f, 0, 1));
                     break;
@@ -67,7 +68,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+         health -= damage;
+        health = Mathf.Clamp(health, 0, 100);
 
         if (health <= 0)
             gm.Dead();
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && collision.otherCollider.gameObject.name == "Sword")
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage((int) (RotationAverage * 50));
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage((int) (RotationAverage * 70));
     }
 
     public void heal(int amount)
