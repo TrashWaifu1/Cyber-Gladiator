@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 public class PlayerController : MonoBehaviour
@@ -17,13 +18,18 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public GameObject bullet;
     public GameObject sword;
+    public GameManager gm;
+    public AudioSource audioSource;
     public TrailRenderer trail;
     public readonly List<float> rotationSamples = new List<float>();
-    public GameManager gm;
     public float RotationAverage = 0;
+    public float swordDamageMod = 250;
+    public ParticleSystem boom;
+    public SpriteRenderer SR;
+    public AudioClip[] sounds;
 
     Stopwatch fireTimer = Stopwatch.StartNew();
-    Quaternion LastRotation = new Quaternion();
+    float LastRotation = 0;
     Vector2 velocity;
     bool weaponSlot;
 
@@ -45,8 +51,10 @@ public class PlayerController : MonoBehaviour
                 case (true):
                     sword.SetActive(true);
 
-                    rotationSamples.Add(Mathf.Abs((weaponJoint.transform.rotation.eulerAngles.z - LastRotation.eulerAngles.z) * Time.deltaTime));
-                    LastRotation = weaponJoint.transform.rotation;
+                    float rotation = weaponJoint.transform.rotation.eulerAngles.z;
+                    float distance = Mathf.Abs(rotation % 360 - LastRotation % 360);
+                    rotationSamples.Add(Mathf.Min(distance, 360 - distance) * Time.deltaTime);
+                    LastRotation = rotation;
 
                     if (rotationSamples.Count > 100)
                         rotationSamples.RemoveAt(0);
@@ -72,7 +80,13 @@ public class PlayerController : MonoBehaviour
         health = Mathf.Clamp(health, 0, 100);
 
         if (health <= 0)
+        {
+            SR.enabled = false;
+            boom.Play();
+            audioSource.PlayOneShot(sounds[0]);
             gm.Dead();
+        }
+            
     }
 
     // Update is called once per frame
@@ -90,12 +104,17 @@ public class PlayerController : MonoBehaviour
     void shoot()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
+        audioSource.PlayOneShot(sounds[2]);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && collision.otherCollider.gameObject.name == "Sword")
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage((int) (RotationAverage * 70));
+        {
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage((int)(RotationAverage * swordDamageMod));
+            audioSource.PlayOneShot(sounds[1]);
+        }
+            
     }
 
     public void heal(int amount)

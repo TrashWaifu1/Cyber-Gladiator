@@ -835,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818432435}
   - component: {fileID: 818432434}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 948226742}
   - component: {fileID: 948226743}
   - component: {fileID: 948226744}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1469,7 +1469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1573453470}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1658,10 +1658,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99827b7a518ca5c408fdea297931fc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundMod: 10
   player: {fileID: 0}
   spawnManager: {fileID: 0}
   pauesScreen: {fileID: 0}
   levelOverScreen: {fileID: 0}
+  SpawnManager: {fileID: 0}
+  levelButtons: []
+  highScoreTxt: []
   healthText: {fileID: 0}
   roundText: {fileID: 0}
   roundTextEndGame: {fileID: 0}
@@ -1809,7 +1813,7 @@ GameObject:
   - component: {fileID: 1873126904}
   - component: {fileID: 1873126911}
   - component: {fileID: 1873126910}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2197,7 +2201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6924324824533991723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: weapon joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2215,7 +2219,7 @@ GameObject:
   - component: {fileID: 6725638236132220693}
   - component: {fileID: 6725638236132220694}
   - component: {fileID: 6725638236132220699}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2311,9 +2315,14 @@ MonoBehaviour:
   firePoint: {fileID: 1573453470}
   bullet: {fileID: 8239202808330497330, guid: 30f60080dee35274081e288516dd0a00, type: 3}
   sword: {fileID: 1873126905}
-  trail: {fileID: 818432434}
   gm: {fileID: 1699068557}
+  audioSource: {fileID: 0}
+  trail: {fileID: 818432434}
   RotationAverage: 0
+  swordDamageMod: 200
+  boom: {fileID: 0}
+  SR: {fileID: 0}
+  sounds: []
 --- !u!4 &6924324824533991723
 Transform:
   m_ObjectHideFlags: 0
@@ -2340,7 +2349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670076093848592308}
   - component: {fileID: 5607868934923202514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

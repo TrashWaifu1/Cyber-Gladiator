@@ -7,14 +7,15 @@ public class SpawnManager : MonoBehaviour
 {
     public int roundNum = 1;
     public int enemysOut;
+    public int maxEnemysOut = 15;
     public GameObject[] enemys;
     public GameObject[] spawners;
-    public int roundStatus = 0;
+    
 
     Stopwatch spawnRate = Stopwatch.StartNew();
+    int roundStatus = 0;
     int randomSpawner;
     int enemyType;
-    int maxEnemysOut = 30;
     int enemysRoundCount;
     int enemysToBeDeploid;
 

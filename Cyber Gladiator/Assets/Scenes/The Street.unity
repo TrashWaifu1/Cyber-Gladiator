@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.8244915, y: 2.086289, z: -10}
+  m_LocalPosition: {x: -5.8244944, y: 2.0858939, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 294989966}
@@ -4372,6 +4372,10 @@ PrefabInstance:
       propertyPath: roundTextEndGame
       value: 
       objectReference: {fileID: 2136434339}
+    - target: {fileID: 7028348069958060569, guid: 82b135ab9d7694941b23a070170c4580, type: 3}
+      propertyPath: SpawnManager
+      value: 
+      objectReference: {fileID: 1069186596}
     - target: {fileID: 7028348069958060574, guid: 82b135ab9d7694941b23a070170c4580, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4519,6 +4523,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2161777471007694486, guid: 5f56fcc5ee897154d9dd58d82813aaf6, type: 3}
   m_PrefabInstance: {fileID: 1069186594}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1069186596 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2161777471007694488, guid: 5f56fcc5ee897154d9dd58d82813aaf6, type: 3}
+  m_PrefabInstance: {fileID: 1069186594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069186595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8ffb0139a27cb4c9c7510024c95163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1292066233
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,13 +4917,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
+    - target: {fileID: 89770788, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1042787840}
+    - target: {fileID: 89770788, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Reload
+      objectReference: {fileID: 0}
     - target: {fileID: 217859848, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1042787840}
     - target: {fileID: 217859848, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: mainMenu
+      value: gotoMainMenuInGame
       objectReference: {fileID: 0}
     - target: {fileID: 1238198418, guid: 4037eff1633a4d143ae2fe0d36d7a987, type: 3}
       propertyPath: m_IsActive

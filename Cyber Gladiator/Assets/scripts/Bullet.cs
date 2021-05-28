@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
 
     Stopwatch lifetimeTimer = Stopwatch.StartNew();
-    // Start is called before the first frame update
+
     void Start()
     {
         rb.velocity = transform.right * speed;

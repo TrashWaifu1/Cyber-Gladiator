@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   spawnManager: {fileID: 0}
+  pauesScreen: {fileID: 0}
+  levelOverScreen: {fileID: 0}
   healthText: {fileID: 0}
   roundText: {fileID: 0}
+  roundTextEndGame: {fileID: 0}
+  SpawnManager: {fileID: 0}
   pause: 0

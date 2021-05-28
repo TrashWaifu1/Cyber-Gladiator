@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int roundMod = 10;
     public GameObject player;
     public GameObject spawnManager;
     public GameObject pauesScreen;
     public GameObject levelOverScreen;
+    public SpawnManager SpawnManager;
+    public UnityEngine.UI.Button[] levelButtons;
+    public TextMeshProUGUI[] highScoreTxt;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI roundText;
@@ -17,11 +21,20 @@ public class GameManager : MonoBehaviour
 
     public bool pause;
 
+    private void Awake()
+    {
+        for (int i = 0; i < highScoreTxt.Length; i++)
+            highScoreTxt[i].SetText("High Score\n" + PlayerPrefs.GetInt("HighScore-Level" + (i + 4)).ToString());
+
+        for (int i = 1; i <= levelButtons.Length; i++)
+                levelButtons[i - 1].interactable = PlayerPrefs.GetInt("HighScore-Level" + (i + 3)) >= (1 * roundMod);  
+    }
+
     void Update()
     {
         healthText.SetText("Health: " + player.GetComponent<PlayerController>().health);
-        roundText.SetText("Round: " + spawnManager.GetComponent<SpawnManager>().roundNum);
-        roundTextEndGame.SetText("Round " + spawnManager.GetComponent<SpawnManager>().roundNum);
+        roundText.SetText("Round: " + SpawnManager.roundNum);
+        roundTextEndGame.SetText("Round " + SpawnManager.roundNum);
 
         if (Input.GetKeyDown(KeyCode.Escape))
             PauseCheck();    
@@ -45,17 +58,26 @@ public class GameManager : MonoBehaviour
 
     public void Dead()
     {
+        Score();
+        
+
         levelOverScreen.SetActive(true);
         PauseCheck();
+    }
 
-        PlayerPrefs.SetInt("PlayerRoundCount", spawnManager.GetComponent<SpawnManager>().roundNum);
+    void Score()
+    {
+        string valueName = "HighScore-Level" + SceneManager.GetActiveScene().buildIndex;
+        if (PlayerPrefs.GetInt(valueName) < SpawnManager.roundNum)
+            PlayerPrefs.SetInt(valueName, SpawnManager.roundNum);
     }
 
     #region Buttons
     public void gotoMainMenuInGame()
     {
-        SceneManager.LoadScene(0);
+        Score();
         PauseCheck();
+        SceneManager.LoadScene(0);
     }
 
     public void start()
@@ -101,6 +123,18 @@ public class GameManager : MonoBehaviour
     public void debug()
     {
         SceneManager.LoadScene(7);
+    }
+
+    public void Reload()
+    {
+        PauseCheck();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void clearData()
+    {
+        for (int i = 0; i < 4; i++)
+            PlayerPrefs.SetInt("HighScore-Level" + (i + 4), 0);
     }
     #endregion
 }
