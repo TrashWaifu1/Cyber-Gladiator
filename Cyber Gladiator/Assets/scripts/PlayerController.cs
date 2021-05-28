@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     public TrailRenderer trail;
     public readonly List<float> rotationSamples = new List<float>();
     public float RotationAverage = 0;
-    public float swordDamageMod = 250;
+    public float swordDamageMod = .25f;
+    public float swordSensitivity = 40;
     public ParticleSystem boom;
     public SpriteRenderer SR;
     public AudioClip[] sounds;
@@ -53,13 +54,13 @@ public class PlayerController : MonoBehaviour
 
                     float rotation = weaponJoint.transform.rotation.eulerAngles.z;
                     float distance = Mathf.Abs(rotation % 360 - LastRotation % 360);
-                    rotationSamples.Add(Mathf.Min(distance, 360 - distance) * Time.deltaTime);
+                    rotationSamples.Add(Mathf.Min(distance, 360 - distance) / Time.deltaTime);
                     LastRotation = rotation;
 
                     if (rotationSamples.Count > 100)
                         rotationSamples.RemoveAt(0);
 
-                    RotationAverage = rotationSamples.Sum() / rotationSamples.Count * 40;
+                    RotationAverage = rotationSamples.Sum() / rotationSamples.Count * swordSensitivity;
 
                     trail.startColor = new Color(0, .8f, 1, Mathf.Clamp(RotationAverage / 1.5f, 0, 1));
                     break;

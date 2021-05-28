@@ -39,7 +39,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.2
+    value: 0.164
   fastMode:
     overrideState: 0
     value: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 1, g: 0, b: 0, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -149,13 +149,13 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 1, g: 0, b: 0, a: 1}
   hueShift:
     overrideState: 0
     value: 0
   saturation:
     overrideState: 0
-    value: 0
+    value: 100
   brightness:
     overrideState: 0
     value: 0
@@ -163,8 +163,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   contrast:
-    overrideState: 1
-    value: 7
+    overrideState: 0
+    value: 100
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
