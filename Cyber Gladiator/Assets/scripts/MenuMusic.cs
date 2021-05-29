@@ -16,6 +16,6 @@ public class MenuMusic : MonoBehaviour
 
     void Update()
     {
-        Source.volume = SceneManager.GetActiveScene().buildIndex < 3 ? 1 : 0;
+        Source.volume = SceneManager.GetActiveScene().buildIndex <= FinalMenuScene ? 1 : 0;
     }
 }

@@ -12275,7 +12275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 2118934971}
-  FinalMenuScene: 4
+  FinalMenuScene: 3
 --- !u!4 &4670076093848592308
 Transform:
   m_ObjectHideFlags: 0
