@@ -15,12 +15,12 @@ public class HealthPack : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player")
         {
-            collision.collider.gameObject.GetComponent<PlayerController>().heal(healAmount);
+            collision.gameObject.GetComponent<PlayerController>().heal(healAmount);
             Destroy(gameObject);
-        } 
+        }
     }
 }
